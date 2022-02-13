@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <input type="text" v-model='nuevaTarea' @keyup.enter='agregarTarea'>
+        <button @click="agregarTarea" type="submit">Agregar</button>
+        <ul>
+            <li v-for="(tarea, index) of tareas">
+                <span>{{index}} - {{tarea.nombre}} - {{tarea.estado}}</span>
+                <button @click="editarTarea(index)" >OK</button>
+                <button @click="eliminarTarea(index)">X</button>
+            </li>
+        </ul>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>

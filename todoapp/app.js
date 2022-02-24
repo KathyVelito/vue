@@ -19,5 +19,5 @@ const app = new Vue({
         eliminarTarea: function (index) {
             this.tareas.splice(index, 1);
         }
-    }
+             }
 });

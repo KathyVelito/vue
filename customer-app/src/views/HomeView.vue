@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeView">
+  <div class="home">
     <h1>Manage Customer</h1>
     <table>
       <thead>
@@ -21,12 +21,13 @@ export default {
   name: 'HomeView',
   data () {
     return {
+      api_key: 'https://jsonplaceholder.typicode.com/users',
       customers: []
     }
   },
   methods: {
     fetchCustomers () {
-      this.$http.get('https://6218de691a1ba20cbaae1312.mockapi.io/users')
+      this.$http.get('')
       .then(function(response){
         this.customers = JSON.parse(response.body);
       });

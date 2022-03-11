@@ -70,7 +70,7 @@
           <div class="w-full flex flex-wrap">
             <div v-for="recent in recents" :key="recent" class="p-2 w-52">
               <div class="bg-neutral-700 w-full h-auto p-5">
-                <img src=" $`{recent.src}` " alt="" class="h-24 w-full shadow mb-2">
+                <img :src="recent.url" :alt="title" class="h-24 w-full shadow mb-2">
                 <h1 class="text-sm font-semibold text-white tracking-wide"> {{recent.title}} </h1>
                 <h2 class="text-xs text-neutral-300 tracking-wide"> {{recent.artist}} </h2>
               </div>
@@ -85,7 +85,7 @@
           <div class="w-full flex flex-wrap">
             <div v-for="custom in customs" :key="custom" class="p-2 w-52">
               <div class="bg-neutral-700 w-full h-auto p-5">
-                <img src=" {{recent.src}} " alt="" class="h-24 w-full shadow mb-2">
+                <img :src="custom.url" :alt="title" class="h-24 w-full shadow mb-2">
                 <h1 class="text-sm font-semibold text-white tracking-wide"> {{custom.title}} </h1>
                 <h2 class="text-xs text-neutral-300 tracking-wide"> {{custom.artist}} </h2>
               </div>
@@ -178,42 +178,42 @@ export default {
       ],
       showDropdown: false,
       recents: [
-        {src: require('./assets/25.jpeg'), 
+        {url: require('@/assets/25.jpeg'), 
         title: '25', 
         artist: 'Adele'},
-        {src: require('./assets/30.jpeg'), 
+        {url: require('@/assets/30.jpeg'), 
         title: '30', 
         artist: 'Adele'},
-        {src: require('./assets/bohemiam.jpeg'), 
+        {url: require('@/assets/bohemiam.jpeg'), 
         title: 'Bohemian Rhapsody', 
         artist: 'Queen'},
-        {src: require('./assets/crazy.jpeg'), 
+        {url: require('@/assets/crazy.jpeg'), 
         title: 'Crazy', 
         artist: 'Aerosmith'},
-        {src: require('./assets/mas.jpeg'), 
+        {url: require('@/assets/mas.jpeg'), 
         title: 'Mas', 
         artist: 'Alejandro Sanz'},
-        {src: require('./assets/Sirope.jpeg'), 
+        {url: require('@/assets/Sirope.jpeg'), 
         title: 'Sirope', 
         artist: 'Alejandro Sanz'}
       ],
       customs: [
-        {src: require('./assets/25.jpeg'), 
+        {url: require('./assets/25.jpeg'), 
         title: '25', 
         artist: 'Adele'},
-        {src: require('./assets/30.jpeg'), 
+        {url: require('./assets/30.jpeg'), 
         title: '30', 
         artist: 'Adele'},
-        {src: require('./assets/bohemiam.jpeg'), 
+        {url: require('./assets/bohemiam.jpeg'), 
         title: 'Bohemian Rhapsody', 
         artist: 'Queen'},
-        {src: require('./assets/crazy.jpeg'), 
+        {url: require('./assets/crazy.jpeg'), 
         title: 'Crazy', 
         artist: 'Aerosmith'},
-        {src: require('./assets/mas.jpeg'), 
+        {url: require('./assets/mas.jpeg'), 
         title: 'Mas', 
         artist: 'Alejandro Sanz'},
-        {src: require('./assets/Sirope.jpeg'), 
+        {url: require('./assets/Sirope.jpeg'), 
         title: 'Sirope', 
         artist: 'Alejandro Sanz'}
       ],

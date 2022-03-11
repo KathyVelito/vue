@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import BoardView from '@/components/BoardView.vue'
 
 const routes = [
   {
@@ -9,11 +8,31 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/board/:id',
-    name: 'BoardView',
-    component: BoardView,
-    props: true
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('@/views/AdminView.vue')
   },
+  {
+    path: '/listar',
+    name: 'Listar',
+    component: () => import('@/components/ListarProducto.vue')
+  },
+  {
+    path: '/editar/:id',
+    name: 'Editar',
+    component: () => import('@/components/EditarProducto.vue')
+  },
+  {
+    path: '/crear',
+    name: 'Crear',
+    component: () => import('@/components/CrearProducto.vue')
+  },
+  {
+    path: '/products',
+    name: 'Products',
+    component: () => import('@/views/ProductsView.vue')
+  },
+  
   {
     path: '/about',
     name: 'about',

@@ -1,30 +1,128 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <header :user= "user">
+    <nav>
+      <span class="title">Vue Trello</span>
+      <router-link class="btn-header" to="/">Mis paneles</router-link> |
+      <router-link to="/about">About</router-link>
+    </nav>
+  </header>
+  <router-view class="container" />
+  <footer>
+    <span>💻 with ❤️ &amp; <a href="https://vuejs.org/">Vue.js</a> in Madrid</span>
+  </footer>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { mapState, mapActions } from 'vuex'
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  name: 'app',
+  components: {},
+  props: {
+    user: Object
+  },
+  data () {
+    return {
+      boardName: ''
+    }
+  },
+  computed: {
+    ...mapState([
+      'user',
+      'boards'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'addBoard'
+    ]),
+    add () {
+      this.addBoard({ name: this.boardName })
+      this.boardName = ''
     }
   }
+}
+</script>
+
+<style lang="scss" scoped>
+#app {
+  box-sizing: border-box;
+    color: #37474f;
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+header {
+    box-sizing: border-box;
+    background-color: #607d8b;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 1rem;
+
+    .title {
+      align-self: center;
+      color: #eceff1;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-right: 1rem;
+    }
+
+  }
+  .btn-header {
+    background-color: #455A64;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 0 0 0.5px rgba(49,49,93,.03),
+      0 2px 5px 0 rgba(49,49,93,.1),
+      0 1px 2px 0 rgba(0,0,0,.08);
+    color: #B0BEC5;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0.5rem;
+    margin: 0 0.5rem
+  }
+  .btn-login {
+    background-color: #00695c;
+    color: #fafafa;
+  }
+
+  .userinfo {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+  span {
+      color: #fafafa;
+      font-size: 0.9rem;
+      font-weight: normal;
+    }
+  }
+
+  img {
+    width: 32px;
+    border-radius: 50%;
+    margin: 0 1rem;
+  }
+
+footer {
+  box-sizing: border-box;
+  background-color: #cfd8dc;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  position: absolute;
+  width: 100%;
+
+  a {
+      text-decoration: none;
+      color: #546E7A;
+    }
 }
 </style>

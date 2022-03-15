@@ -27,15 +27,7 @@
             </li>
           </ul>
           <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
+            <ShopCart/>
           </form>
         </div>
       </div>
@@ -46,6 +38,7 @@
 
 <script>
 import LogIn from '@/sections/LogIn.vue'
+import ShopCart from '@/components/ShopCart.vue'
 
 export default {
     name: 'NavBar',
@@ -53,7 +46,8 @@ export default {
       msg: String
     },
     components: {
-      LogIn
+      LogIn,
+      ShopCart
     }
 };
 </script>

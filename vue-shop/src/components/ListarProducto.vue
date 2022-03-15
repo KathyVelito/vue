@@ -67,33 +67,7 @@ export default {
     }
   }
 
-   /*created: function () {
-      this.consultarProductos();
-    },
-  methods: {
-    consultarProductos() {
-      fetch("https://6218de691a1ba20cbaae1312.mockapi.io/Productos/")
-        .then((respuesta) => respuesta.json())
-        .then((datosRespuesta) => {
-          console.log(datosRespuesta);
-          this.productos = [];
-          if (typeof datosRespuesta[0].success === "undefined") {
-            this.productos = datosRespuesta;
-          }
-        })
-        .catch(console.log);
-    },
-    borrarProducto(id) {
-      console.log(id);
-
-      fetch("https://6218de691a1ba20cbaae1312.mockapi.io/Productos/?borrar=/:id")
-        .then((respuesta) => respuesta.json())
-        .then((datosRespuesta) => {
-          console.log(datosRespuesta);
-        })
-        .catch(console.log);
-    },
-  },*/
+   
 };
 </script>
 

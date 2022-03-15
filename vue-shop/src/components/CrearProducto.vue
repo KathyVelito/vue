@@ -1,4 +1,5 @@
 <template>
+<AdminView/>
   <div class="container">
             <form v-on:submit.prevent = 'agregarProducto'>
                 <div class="mb-3">
@@ -72,8 +73,8 @@
                     />
                 </div>
 
-                <div class="d-grid col-md-8">
-                    <button class="btn btn-success btn-sm" v-on:click="addData" type="submit">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-success btn-sm mb-3" v-on:click="addData" type="submit">
                         Guardar
                     </button>
                     <router-link to="/listar" class="btn btn-warning btn-sm" type="button">
@@ -85,10 +86,14 @@
 </template>
 
 <script>
+import AdminView  from '@/views/AdminView.vue'
 import { api } from '@/api/api'
 
 export default {
     name: 'CrearProducto',
+    components: {
+        AdminView
+    },
     data() {
         return {
             prod_nombre:null,

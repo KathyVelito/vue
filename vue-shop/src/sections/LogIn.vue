@@ -1,133 +1,135 @@
 <template>
-  <div
-    class="modal fade"
-    id="login"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-    tabindex="-1"
-    aria-labelledby="loginLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <ul class="nav nav-fill nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                id="pills-home-tab"
-                data-toggle="pill"
-                href="#pills-login"
-                role="tab"
-                aria-controls="pills-login"
-                aria-selected="true"
-                >Login</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                id="pills-register-tab"
-                data-toggle="pill"
-                href="#pills-register"
-                role="tab"
-                aria-controls="pills-register"
-                aria-selected="false"
-                >Signup</a
-              >
-            </li>
-          </ul>
-          <div class="tab-content" id="pills-tabContent">
-            <div
-              class="tab-pane fade show active"
-              id="pills-login"
-              role="tabpanel"
-              aria-labelledby="pills-login-tab"
+  <div class="login">
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="login"
+      aria-hidden="true"
+      aria-labelledby="loginLabel"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginLabel">Login</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+              <form class="login" @submit.prevent="login">
+				<h2>Login</h2>
+				<input 
+					type="email" 
+					placeholder="Email address"
+					v-model="login_form.email" />
+				<input 
+					type="password" 
+					placeholder="Password" 
+					v-model="login_form.password" />
+				<input 
+					type="submit" 
+					value="Login" />
+			</form>
+          </div>
+          <div class="modal-footer">
+              <small>
+                  Si no tienes usuario registrate aquí!
+              </small>
+            <button
+              class="btn btn-primary"
+              data-bs-target="#register"
+              data-bs-toggle="modal"
             >
-              <h5 class="text-center">Login Please</h5>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter email"
-                />
-                <small class="form-text text-muted"
-                  >We'll never share your email with anyone else.</small
-                >
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="Password"
-                />
-              </div>
-
-              <div class="form-group">
-                <button class="btn btn-primary" @click="login">Login</button>
-              </div>
-            </div>
-            <div
-              class="tab-pane fade"
-              id="pills-register"
-              role="tabpanel"
-              aria-labelledby="pills-register-tab"
-            >
-              <h5 class="text-center">Create New Account</h5>
-
-              <div class="form-group">
-                <label for="name">Your name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  placeholder="Your nice name"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email address</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter email"
-                />
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  placeholder="Password"
-                />
-              </div>
-
-              <div class="form-group">
-                <button class="btn btn-primary">
-                  Signup
-                </button>
-              </div>
-            </div>
+              Register
+            </button>
           </div>
         </div>
       </div>
     </div>
+    <div
+      class="modal fade"
+      id="register"
+      aria-hidden="true"
+      aria-labelledby="registerLabel"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="registerToggleLabel">
+                Register
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+              <form class="register" @submit.prevent="register">
+				<input 
+					type="email" 
+					placeholder="Email address"
+					v-model="register_form.email" />
+				<input 
+					type="password" 
+					placeholder="Password" 
+					v-model="register_form.password" />
+				<input 
+					type="submit" 
+					value="Register" />
+			</form>
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-primary"
+              data-bs-target="#login"
+              data-bs-toggle="modal"
+            >
+              Back to Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      href="#login"
+      role="button"
+      >Login</a
+    >
   </div>
 </template>
 
 <script>
-
+import { ref } from 'vue'
+import { useStore } from 'vuex'
 export default {
-    name: 'LogIn'
-};
+    name: 'LogIn',
+	setup () {
+		const login_form = ref({});
+		const register_form = ref({});
+		const store = useStore();
+		const login = () => {
+			store.dispatch('login', login_form.value);
+		}
+		const register = () => {
+			store.dispatch('register', register_form.value);
+		}
+		return {
+			login_form,
+			register_form,
+			login,
+			register
+		}
+	}
+}
 </script>
 
 <style>
